@@ -1,7 +1,7 @@
 @extends('dashboard.master')
 @section('titulo', 'DetallesCategory')
 @section('contenido')
-  <h2>Detalles Post</h2>
+  <h2>Detalles Category</h2>
   <div class="row">
     <div class="form-group">
       <label for="name">Titulo</label>
