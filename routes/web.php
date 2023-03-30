@@ -28,6 +28,7 @@ Route::get('/dashboard', function () {
 Route::resource('/dashboard/post', PostController::class);
 Route::resource('/dashboard/category', CategoryController::class);
 Route::resource('/dashboard/roles', RolController::class);
+//Route::resource('/dashboard/usuarios', UsuarioController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
