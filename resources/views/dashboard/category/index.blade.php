@@ -1,7 +1,7 @@
 @extends('dashboard.master')
 @section('titulo', 'Categories')
 @section('contenido')
-  <h2>Categorias Publicadas</h2>
+  <h2 class="text-xl">Categorias Publicadas</h2>
   <a class="btn btn-success mt-3 mb-3" href="{{ route('category.create') }}">Crear</a>
   <table class="table table-striped">
     <thead>
@@ -25,7 +25,7 @@
           <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary btn-sm" title="editar">✍️</a>
 
           {{-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="{{ $post->id }}" title="eliminar">✖️</button> --}}
-          <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-id="{{ $category->id }}">✖️</button>
+          <button type="button" class="btn btn-danger btn-sm bg-red-500" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-id="{{ $category->id }}">✖️</button>
         </td>
       </tr>
       @endforeach
@@ -43,11 +43,11 @@
           <p>¿Seguro que desea borrar el registro seleccionado?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-secondary bg-secondary" data-bs-dismiss="modal">Cerrar</button>
           <form action="{{ route('post.destroy', 0) }}" method="post" id="deleteForm">
             @method('DELETE')
             @csrf
-            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <button type="submit" class="btn btn-danger bg-red-500">Eliminar</button>
           </form>
         </div>
       </div>

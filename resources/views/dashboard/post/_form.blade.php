@@ -42,7 +42,7 @@
   {{-- Las columnas en bootstrap tiene una ancho de 12
     Añadir 2 input en una fila: 12/cantidadInput --}}
   <div class="col s6">
-    <button class="btn btn-success btn-sm" type="submit">Publicar</button>
+    <button class="btn btn-success btn-sm bg-success" type="submit">Publicar</button>
     <a href="{{ route('post.index') }}" class="btn btn-primary btn-sm">Volver</a>
   </div>
 </div>
