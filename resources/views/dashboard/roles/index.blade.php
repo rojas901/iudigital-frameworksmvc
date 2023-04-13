@@ -2,32 +2,41 @@
 @section('titulo', 'Roles')
 @section('contenido')
   <h2 class="text-xl">Roles Publicados</h2>
+  @can('crear-rol')
   <a class="btn btn-success mt-3 mb-3" href="{{ route('roles.create') }}">Crear</a>
+  @endcan  
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Creación</th>
-        <th scope="col">Actualización</th>
+        <th scope="col">Rol</th>
+        <th scope="col">Permisos</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($roles as $role)
+      @forelse ($roles as $role)
       <tr>
-        <th scope="row">{{ $role->id }}</th>
         <td>{{ $role->name }}</td>
-        <td>{{ $post->created_at }}</td>
-        <td>{{ $post->updated_at }}</td>
         <td>
+        @forelse ($role->permissions as $permission)
+        <span class="text-bg-black border border-primary">{{ $permission->name }}</span>            
+        @empty
+        <span class="badge text-bg-danger">No tiene permisos</span>
+        @endforelse
+        </td>
+        <td>
+          @can('editar-rol')
           <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary btn-sm" title="editar">✍️</a>
-
+          @endcan
           
+          @can('eliminar-rol')
           <button type="button" class="btn btn-danger btn-sm bg-red-500" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-id="{{ $role->id }}">✖️</button>
+          @endcan
         </td>
       </tr>
-      @endforeach
+      @empty
+      <p>No hay roles</p>
+      @endforelse
     </tbody>
   </table>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" role="dialog" aria-hidden="true">
