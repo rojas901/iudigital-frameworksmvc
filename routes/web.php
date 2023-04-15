@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,7 @@ Route::get('/dashboard', function () {
 Route::resource('/dashboard/post', PostController::class);
 Route::resource('/dashboard/category', CategoryController::class);
 Route::resource('/dashboard/roles', RolController::class);
-//Route::resource('/dashboard/usuarios', UsuarioController::class);
+Route::resource('/dashboard/usuario', UsuarioController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
