@@ -17,9 +17,9 @@
       @forelse ($roles as $role)
       <tr>
         <td>{{ $role->name }}</td>
-        <td>
+        <td class="col-8">
         @forelse ($role->permissions as $permission)
-        <span class="text-bg-black border border-primary">{{ $permission->name }}</span>            
+        <span class="badge rounded-pill bg-dark">{{ $permission->name }}</span>            
         @empty
         <span class="badge text-bg-danger">No tiene permisos</span>
         @endforelse
@@ -29,7 +29,7 @@
           <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary btn-sm" title="editar">✍️</a>
           @endcan
           
-          @can('eliminar-rol')
+          @can('borrar-rol')
           <button type="button" class="btn btn-danger btn-sm bg-red-500" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-id="{{ $role->id }}">✖️</button>
           @endcan
         </td>

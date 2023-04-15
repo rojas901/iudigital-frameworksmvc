@@ -2,7 +2,9 @@
 @section('titulo', 'Categories')
 @section('contenido')
   <h2 class="text-xl">Categorias Publicadas</h2>
-  <a class="btn btn-success mt-3 mb-3" href="{{ route('category.create') }}">Crear</a>
+  @can('crear-category')
+  <a class="btn btn-success mt-3 mb-3" href="{{ route('category.create') }}">Crear</a> 
+  @endcan
   <table class="table table-striped">
     <thead>
       <tr>
@@ -22,10 +24,13 @@
         <td>{{ $category->updated_at }}</td>
         <td>
           <a href="{{ route('category.show', $category->id) }}" class="btn btn-primary btn-sm" title="ver">👀</a>
-          <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary btn-sm" title="editar">✍️</a>
-
-          {{-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="{{ $post->id }}" title="eliminar">✖️</button> --}}
+          @can('editar-category')
+          <a href="{{ route('category.edit', $category->id) }}" class="btn btn-primary btn-sm" title="editar">✍️</a> 
+          @endcan
+          
+          @can('borrar-category')
           <button type="button" class="btn btn-danger btn-sm bg-red-500" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-id="{{ $category->id }}">✖️</button>
+          @endcan
         </td>
       </tr>
       @endforeach
