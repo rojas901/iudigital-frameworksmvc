@@ -30,15 +30,15 @@
         <input class="form-control" type="password" name="confirm-password" id="confirm-password" value="{{ old('confirm-password') }}">
       </div>
       
-      <div class="form-group col-6">
+      {{-- <div class="form-group col-6">
         <label for="roles">Roles</label>
         <select class="form-select" name="roles" id="category_id">
           @foreach ($roles as $rol)
             <option value="{{ $rol->name }}" {{ $userRole[0]['name'] == $rol->name ? 'selected' : null}}>{{ $rol->name }}</option>
           @endforeach
         </select>
-      </div>
-      {{-- <div class="form-group col-6">
+      </div> --}}
+      <div class="form-group col-6">
         <label for="roles">Roles</label>
         <select class="form-control" name="roles" id="roles">
           <option value="">--Seleccione un rol--</option>
@@ -46,7 +46,7 @@
             <option value="{{ $rol->name }}">{{ $rol->name }}</option>
           @endforeach
         </select>
-      </div> --}}
+      </div>
     </div>
     
     <div class="row center mt-2">
