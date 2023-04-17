@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name', 100)->nullable()->default('text');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->unsignedBigInteger('autor_id');
+            $table->foreign('autor_id')->references('id')->on('users');
             $table->text('description')->nullable();
             $table->enum('state', ['post', 'no_post'])->default('no_post');
             $table->timestamps();
