@@ -26,7 +26,8 @@ class StorePost extends FormRequest
             'name'=>'required|min:3|max:100',
             'description'=>'required|min:3|max:250',
             'category_id'=>'required',
-            'state'=>'required'
+            'state'=>'required',
+            'autor_id'=>'required',
         ];
     }
 }

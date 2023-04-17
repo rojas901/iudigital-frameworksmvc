@@ -6,6 +6,7 @@
   <div class="form-group">
     <label for="name">Titulo</label>
     <input class="form-control" type="text" name="name" id="name" value="{{ old('name', $post->name) }}">
+    <input class="form-control" name="autor_id" value="{{ Auth::user()->id }}" hidden>
   </div>
 </div>
 

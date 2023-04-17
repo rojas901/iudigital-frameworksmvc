@@ -11,6 +11,7 @@
         <th scope="col">Id</th>
         <th scope="col">Nombre</th>
         <th scope="col">Categoria</th>
+        <th scope="col">Autor</th>
         <th scope="col">Estado publicación</th>
         <th scope="col">Creación</th>
         <th scope="col">Actualización</th>
@@ -23,9 +24,11 @@
         <th scope="row">{{ $post->id }}</th>
         <td>{{ $post->name }}</td>
         <td>{{ $post->category->name}}</td>
+        <td>{{ $post->autor->name}}</td>
         <td>{{ $post->state }}</td>
         <td>{{ $post->created_at }}</td>
         <td>{{ $post->updated_at }}</td>
+        @if ($post->autor_id == Auth::user()->id)
         <td>
           <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary btn-sm" title="ver">👀</a>
           @can('editar-post')
@@ -36,6 +39,11 @@
           <button type="button" class="btn btn-danger btn-sm bg-red-500" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-id="{{ $post->id }}">✖️</button>
           @endcan          
         </td>
+        @else
+          <td>
+            <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary btn-sm" title="ver">👀</a>
+          </td> 
+        @endif        
       </tr>
       @endforeach
     </tbody>

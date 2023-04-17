@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable=['name', 'description', 'category_id', 'state'];
+    protected $fillable=['name', 'description', 'category_id', 'state', 'autor_id'];
 
     public function category() {
         return $this->belongsTo(Category::class);
     }
 
-    public function user() {
+    public function autor() {
         return $this->belongsTo(User::class);
     }
 
