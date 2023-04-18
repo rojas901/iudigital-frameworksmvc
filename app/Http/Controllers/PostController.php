@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Reply;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePost;
 
@@ -56,7 +57,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //
-        return view('dashboard.post.show', ["post"=>$post]);
+        $replys = Reply::all();
+        return view('dashboard.post.show', ["replys"=>$replys], ["post"=>$post], ['reply'=>new Reply()]);
     }
 
     /**

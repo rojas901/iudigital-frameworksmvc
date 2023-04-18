@@ -28,7 +28,14 @@ class ReplyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'text'=>'required',
+            'post_id'=>'required'
+        ]);
+
+        Reply::create($request->only('text', 'post_id'));
+        return back()->with('status', 'Respuesta creada con éxito');
+
     }
 
     /**
@@ -45,6 +52,7 @@ class ReplyController extends Controller
     public function edit(Reply $reply)
     {
         //
+        return view('dashboard.reply.edit', ["reply"=> $reply]);
     }
 
     /**
@@ -52,7 +60,9 @@ class ReplyController extends Controller
      */
     public function update(Request $request, Reply $reply)
     {
-        //
+        $this->validate($request, ['text'=>'required', 'post_id'=>'required']);
+        $reply->update($request->only('text', 'post_id'));
+        return back()->with('status', 'Respuesta actualizada con éxito');
     }
 
     /**
@@ -60,6 +70,7 @@ class ReplyController extends Controller
      */
     public function destroy(Reply $reply)
     {
-        //
+        $reply->delete();
+        return back()->with('status', 'Publicación eliminada con éxito');
     }
 }
